@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/KlocworkPlugin">
+        <file>images/chart_file.png</file>
+        <file>images/doTriage.png</file>
+        <file>images/kwLogo.png</file>
+        <file>images/redChevron.png</file>
+        <file>images/reload_gray@2x.png</file>
+        <file>images/showCurrentFile.png</file>
+        <file>images/showIgnored.png</file>
+        <file>images/showLocal.png</file>
+        <file>images/yellowChevron.png</file>
+        <file>images/filtericon.png</file>
+    </qresource>
+</RCC>
