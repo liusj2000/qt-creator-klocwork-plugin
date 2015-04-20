@@ -18,6 +18,8 @@ Essentially, you can detect runtime bugs like null pointer dereferences, uniniti
 
 Alternatively, follow the above steps and then copy the libKlocwork.xxx library file to the plugins library directory for an existing version of Qt Creator. Note that you need to be using compatible versions of Qt Creator.
 
+Built and tested against Qt Creator version 3.8.41 and Qt version 5.4.2
+
 ## Usage
 
 1. Install the Klocwork Command Line Tools (get these from Rogue Wave / local partner)
