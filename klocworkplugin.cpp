@@ -87,6 +87,14 @@ bool KlocworkPlugin::initialize(const QStringList &arguments,
     connect(actionKwAnalyse, SIGNAL(triggered()), this,
             SLOT(analyseSelection()));
 
+    QAction *actionKwAnalyseOpen = new QAction(tr("Analyse Open Files"), this);
+    Core::Command *cmdKwAnalyseOpen = Core::ActionManager::registerAction(
+        actionKwAnalyseOpen, Constants::ACTION_ID_ANALYSEOPEN,
+        Core::Context(Core::Constants::C_GLOBAL));
+    cmdKwAnalyseOpen->setDefaultKeySequence(QKeySequence(tr("Ctrl+Alt+Meta+O")));
+    connect(actionKwAnalyseOpen, SIGNAL(triggered()), this,
+            SLOT(analyseOpen()));
+
     QAction *actionKwClean = new QAction(tr("Clean Klocwork Project"), this);
     Core::Command *cmdKwClean = Core::ActionManager::registerAction(
         actionKwClean, Constants::ACTION_ID_CLEANPROJECT,
@@ -98,6 +106,7 @@ bool KlocworkPlugin::initialize(const QStringList &arguments,
         Core::ActionManager::createMenu(Constants::MENU_ID);
     menu->menu()->setTitle(tr("Klocwork"));
     menu->addAction(cmdKwAnalyse);
+    menu->addAction(cmdKwAnalyseOpen);
     menu->addAction(cmdKwClean);
     Core::ActionManager::actionContainer(Core::Constants::M_TOOLS)
         ->addMenu(menu);
@@ -174,9 +183,27 @@ void KlocworkPlugin::analyseSelection() {
     if (doc) {
         Project *project = ProjectTree::currentProject();
         if (project != 0) {
-
             m_runner->runAnalysis(project->activeTarget()->project(),
                                   QStringList() << doc->filePath().toString());
+        }
+    }
+}
+
+void KlocworkPlugin::analyseOpen() {
+
+    QList<Core::IDocument *> documents = Core::DocumentModel::openedDocuments();
+
+    QStringList files;
+
+    for (Core::IDocument *doc : documents) {
+        files.append(doc->filePath().toString());
+    }
+
+    if (!files.isEmpty()) {
+        Project *project = ProjectTree::currentProject();
+        if (project != 0) {
+            m_runner->runAnalysis(project->activeTarget()->project(),
+                                  files);
         }
     }
 }

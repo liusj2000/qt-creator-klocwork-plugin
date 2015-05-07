@@ -51,6 +51,7 @@ public:
 
 private slots:
     void analyseSelection();
+    void analyseOpen();
     void projectOpenened(ProjectExplorer::Project*);
     void projectClosed(ProjectExplorer::Project*);
     void cleanKlocworkProject();

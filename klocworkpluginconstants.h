@@ -45,8 +45,9 @@ const char TASK_CATEGORY_NAME[] = "Klocwork";
 const char OUTPUT_PANE_KW_ANALYSIS[] = "kwOutputPane";
 
 const char ACTION_ID_CLEANPROJECT[] = "KlocworkPlugin.Action.CleanProject";
-const char ACTION_ID_ANALYSESELECTION[] =
-    "KlocworkPlugin.Action.AnalyseSelection";
+const char ACTION_ID_ANALYSESELECTION[] = "KlocworkPlugin.Action.AnalyseSelection";
+const char ACTION_ID_ANALYSEOPEN[] = "KlocworkPlugin.Action.AnalyseOpen";
+
 const char MENU_ID[] = "KlocworkPlugin.Menu";
 
 const char KW_STATUS_LIST[] = "Analyze,Ignore,Not a Problem,Fix,Fix in Next "
